@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>POST DEMO</title>
+</head>
+
+<body>
+	<form action="login.php" method="post">
+		<div>
+			<label>Name*</label>
+			<input type="text" name="name" required/>
+		</div>
+        <div>
+			<label>Phone</label>
+			<input type="text" name="phn" />
+		</div>
+        <div>
+			<label>Email*</label>
+			<input type="text" name="email" required/>
+		</div>
+		<div>
+			<label>Password*</label>
+			<input type="password" name="pass" required/>
+		</div>
+        <div>
+			<label>Re-Password*</label>
+			<input type="password" name="cpass" required/>
+		</div>
+		<div>
+			<label>Skype</label>
+			<input type="text" name="skype" />
+		</div>
+        <input type="checkbox" name="terms" value="0" onclick=(value="1")>
+        <label for="terms">Terms & Condition</label><br>
+        <div>
+			<label>Choose a Plan</label>
+			<select name="plan">
+                <option value="" label="Select a plan" selected="selected">Select a plan</option>
+				<option value="Growth">Growth</option>
+				<option value="Plus">Plus</option>
+				<option value="Premium">Premium</option>
+				<option value="Custom">Custom</option>
+			</select>
+		</div>
+        <div>
+			<label>User Type</label>
+			<select name="user">
+                <option value="" label="Select user type" selected="selected">Select user type</option>
+				<option value="Normal">Normal</option>
+				<option value="SafePixel (Verify)">SafePixel (Verify)</option>
+				<option value="SafePixel (Block)">SafePixel (Block)</option>
+				<option value="SafePixel Analytics">SafePixel Analytics</option>
+				<option value="SafeGateway">SafeGateway</option>
+				<option value="SafeLink">SafeLink</option>
+			</select>
+		</div>
+        <input type="submit" value="Submit">
+	</form>
+
+	<script>
+        /*function myfunc(){
+            var pass=document.getElementById("pass").value;
+            var cpass=document.getElementById("cpass").value;
+            if(pass!=cpass){
+                alert("Password and Confrim Password doesn't match.");
+                document.getElementById("pass").value="";
+                document.getElementById("cpass").value="";
+                document.getElementById("pass").focus();
+                return false;
+            }
+            return true;
+        }*/
+		// add
+        /*
+		document.querySelector('#add')
+			.addEventListener('click', (e) => {
+				e.preventDefault();
+				const username = document
+					.querySelector('#user').value;
+
+				const password = document
+					.querySelector('#pass').value;
+
+				const email = document
+					.querySelector('#email').value;
+
+				const org = document
+					.querySelector('#Org').value;
+
+				const api = document
+					.querySelector('#add').value;
+
+                const bizid = document
+					.querySelector('#biz').value;
+
+				const grpid = document
+					.querySelector('#grp').value;
+
+				const skype = document
+					.querySelector('#skype').value;
+
+                const supusr = document
+					.querySelector('#supusr').value;
+
+				const rw = document
+					.querySelector('#rw').value;
+
+
+				fetch('/add', { // chng
+					method: 'POST',
+					headers: {
+						Authorization: localStorage.getItem("token"),
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						username,
+						password,
+						email,
+						api,
+						org,
+                        bizid,
+                        grpid,
+                        skype,
+                        supusr,
+                        rw,
+					}),
+				})
+					.then((res) => {
+						return res.json();
+					})
+					//.then((data) => console.log(data));
+					.then((data) => {document.getElementById("show").innerHTML = data.error
+									//console.log(data)
+					})
+			});
+
+			//login
+			document.querySelector('#login')
+			.addEventListener('click', (e) => {
+				e.preventDefault();
+				const username = document
+					.querySelector('#user').value;
+
+				const password = document
+					.querySelector('#pass').value;
+
+				const email = document
+					.querySelector('#email').value;
+
+				const org = document
+					.querySelector('#Org').value;
+
+				const api = document
+					.querySelector('#add').value;
+
+                const bizid = document
+					.querySelector('#biz').value;
+
+				const grpid = document
+					.querySelector('#grp').value;
+
+				const skype = document
+					.querySelector('#skype').value;
+
+                const supusr = document
+					.querySelector('#supusr').value;
+
+				const rw = document
+					.querySelector('#rw').value;
+
+
+				fetch('/login', { // chng
+					method: 'POST',
+					headers: {
+						Authorization: localStorage.getItem("token"),
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						username,
+						password,
+						email,
+						api,
+						org,
+                        bizid,
+                        grpid,
+                        skype,
+                        supusr,
+                        rw,
+					}),
+				})
+					.then((res) => {
+						return res.json();
+					})
+					//.then((data) => console.log(data));
+					.then((data) => {document.getElementById("show").innerHTML = data.error
+									//console.log(data)
+									localStorage.setItem("token",data.token)
+					})
+			});
+
+			// disable
+			document.querySelector('#disable')
+			.addEventListener('click', (e) => {
+				e.preventDefault();
+
+				const email = document
+					.querySelector('#email').value;
+
+				fetch('/disable', { // chng
+					method: 'POST',
+					headers: {
+						Authorization: localStorage.getItem("token"),
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						email,
+					}),
+				})
+					.then((res) => {
+						return res.json();
+					})
+					//.then((data) => console.log(data));
+					.then((data) => {document.getElementById("show").innerHTML = data.error
+									//console.log(data)
+									//localStorage.setItem("token",data.token)
+					})
+			});
+
+			//enable
+			document.querySelector('#enable')
+			.addEventListener('click', (e) => {
+				e.preventDefault();
+
+				const email = document
+					.querySelector('#email').value;
+
+				fetch('/enable', { // chng
+					method: 'POST',
+					headers: {
+						Authorization: localStorage.getItem("token"),
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						email,
+					}),
+				})
+					.then((res) => {
+						return res.json();
+					})
+					//.then((data) => console.log(data));
+					.then((data) => {document.getElementById("show").innerHTML = data.error
+									//console.log(data)
+									//localStorage.setItem("token",data.token)
+					})
+			});
+
+			// update
+			document.querySelector('#update')
+			.addEventListener('click', (e) => {
+				e.preventDefault();
+				const username = document
+					.querySelector('#user').value;
+
+				const password = document
+					.querySelector('#pass').value;
+
+				const email = document
+					.querySelector('#email').value;
+
+				const org = document
+					.querySelector('#Org').value;
+
+				const api = document
+					.querySelector('#add').value;
+
+                const bizid = document
+					.querySelector('#biz').value;
+
+				const grpid = document
+					.querySelector('#grp').value;
+
+				const skype = document
+					.querySelector('#skype').value;
+
+                const supusr = document
+					.querySelector('#supusr').value;
+
+				const rw = document
+					.querySelector('#rw').value;
+
+
+				fetch('/update', { // chng
+					method: 'POST',
+					headers: {
+						Authorization: localStorage.getItem("token"),
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						username,
+						password,
+						email,
+						api,
+						org,
+                        bizid,
+                        grpid,
+                        skype,
+                        supusr,
+                        rw,
+					}),
+				})
+					.then((res) => {
+						return res.json();
+					})
+					//.then((data) => console.log(data));
+					.then((data) => {document.getElementById("show").innerHTML = data.error
+									//console.log(data)
+					})
+			});
+
+			// fetch
+			document.querySelector('#fetch')
+			.addEventListener('click', (e) => {
+				e.preventDefault();
+
+				const email = document
+					.querySelector('#email').value;
+
+
+				fetch('/fetch', { // chng
+					method: 'POST',
+					headers: {
+						Authorization: localStorage.getItem("token"),
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						email,
+					}),
+				})
+					.then((res) => {
+						return res.json();
+					})
+					//.then((data) => console.log(data));
+					.then((data) => {document.getElementById("show").innerHTML = data.error
+									//console.log(data)
+					})
+			});
+            */
+	</script>
+</body>
+
+</html>
