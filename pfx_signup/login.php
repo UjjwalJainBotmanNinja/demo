@@ -49,4 +49,7 @@ if($type=="SafePixel (Verify)" || $type=="SafePixel (Block)" || $type=="SafePixe
 
     $conn->close();
 }
+else{
+    echo "Normal User";   
+}
 ?>  
